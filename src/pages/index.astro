@@ -1,11 +1,23 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const rules = (await getCollection("rules"))
+  .filter(rule => rule.data.published)
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
 ---
 
 <Layout>
-	<Welcome />
+  <h1 class="text-center fun">internetting is fun!</h1>
+  <div class="prose justify-center flex">
+    <ul>
+      {rules.map(rule => (
+        <li>
+          <a href={`/${rule.id}/`}>
+            {rule.data.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </Layout>

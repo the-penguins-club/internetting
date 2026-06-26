@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+
+.fun {
+    font-size: 48px;
+    font-family: 'Bad Script', cursive, sans-serif;
+    hyphens: auto;
+    line-height: 110%;
+}
+
+@media (min-width: 480px) {
+    .fun {
+        font-size: 64px;
+    }
+}
+
+@media (min-width: 768px) {
+    .fun {
+        font-size: 96px;
+    }
+}
+
+/* Small laptops */
+@media (min-width: 1024px) {
+    .fun {
+        font-size: 140px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .fun {
+        font-size: 180px;
+    }
+}
