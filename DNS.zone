@@ -1,9 +1,0 @@
-$TTL        600
-$ORIGIN     internetting.fun.
-
-www                     IN  CNAME   internetting.fun.
-
-$GENERATE   108-111     @   A       185.199.${0,0,d}.153
-$GENERATE   32768-32771 @   AAAA    2606:50c0:${0,0,x}::153
-
-; https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-an-apex-domain
