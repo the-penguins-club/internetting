@@ -1,0 +1,29 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const rules = await getCollection("rules");
+
+  return rules.map(rule => ({
+    params: {
+      slug: rule.id,
+    },
+    props: {
+      rule,
+    },
+  }));
+}
+
+const { rule } = Astro.props;
+
+const { Content } = await render(rule);
+---
+
+<Layout>
+  <div class="prose lg:prose-xl prose-neutral dark:prose-invert">
+  <h1>{rule.data.title}</h1>
+  <p>{rule.data.description}</p>
+  <Content />
+  </div>
+</Layout>

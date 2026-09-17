@@ -1,0 +1,23 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const rules = (await getCollection("rules"))
+  .filter(rule => rule.data.published)
+  .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+---
+
+<Layout>
+  <h1 class="text-center fun">internetting is fun!</h1>
+  <div class="prose justify-center flex">
+    <ul>
+      {rules.map(rule => (
+        <li>
+          <a href={`/${rule.id}/`}>
+            {rule.data.title}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>
